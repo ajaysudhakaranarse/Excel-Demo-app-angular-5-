@@ -1,0 +1,55 @@
+<div class = "head">
+  <h1>
+    Excel Demo {{title}}
+  </h1>
+</div>
+<form>
+  <div >
+      <table id = "tbl">
+        <tr>
+          <th>Index</th>
+          <th>Input 1</th>
+          <th>Input 2</th>
+          <th>Save</th>
+          <th>Operation</th>
+          <th>Result</th>
+          <th>Remove</th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><input type='text' name = "dataNo1" id = "dataNo1" placeholder="Enter no" [(ngModel)]="data.no1" required></th>
+          <th><input type='text' name = "dataNo2" id = "dataNo2" placeholder="Enter no" [(ngModel)]="data.no2" required></th>
+          <th><input type="submit" value="save" (click)=save()></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <!--<th><input type="submit" value="add" (click)=addition(dataNo1,dataNo2)></th>-->
+        </tr>
+        <tr *ngFor = "let row of rows; let i = index">
+          <td>{{i+1}}</td>
+          <td><input type='text' name = "{{row.no1}}" [(ngModel)]="row.no1" (change)= "change(row.no1, row.no2, i)"></td>
+          <td><input type='text' name = "{{row.no2}}" [(ngModel)]="row.no2" (change)= "change(row.no1, row.no2, i)"></td>
+          <td></td>
+          <td>
+            <input type="submit" value="add" (click)=addition(row.no1,row.no2,i)>
+            <input type="submit" value="sub" (click)=substraction(row.no1,row.no2,i)>
+            <input type="submit" value="mult" (click)=multiplication(row.no1,row.no2,i)>
+            <input type="submit" value="div" (click)=division(row.no1,row.no2,i)>
+          </td>
+          <td>
+            <div *ngIf = "i == compare; else elseBlock"> <!-- for specific row -->
+              <div [ngSwitch]="flag">
+                <td *ngSwitchCase = "'add'">{{row.no1}} + {{row.no2}} = {{row.result}} </td>
+                <td *ngSwitchCase = "'sub'">{{row.no1}} - {{row.no2}} = {{row.result}} </td>
+                <td *ngSwitchCase = "'mult'">{{row.no1}} * {{row.no2}} = {{row.result}} </td>
+                <td *ngSwitchCase = "'div'">{{row.no1}} / {{row.no2}} = {{row.result}} </td>
+                <td *ngSwitchDefault></td>
+              </div>
+            </div>
+          </td>
+          <ng-template #elseBlock></ng-template>
+          <td><input type="submit" value="delete" (click)=delete(i)></td>
+        </tr>
+      </table>
+  </div>
+</form>

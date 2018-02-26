@@ -1,0 +1,38 @@
+.head{
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #9933cc;
+  padding: 1%;
+  color: #ffffff;
+}
+
+input{
+  border: 1px solid white;
+  padding: 8px;
+  border-radius: 8px;
+}
+button{
+  margin-bottom: 10px;
+  background-color: #898686;
+  color:#ffffff;
+  font-size: 20px;
+  padding: 10px 24px;
+  border-radius: 8px;
+}
+
+table {
+  font-family: sans-serif;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout:inherit;
+}
+
+th,td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd
+}
